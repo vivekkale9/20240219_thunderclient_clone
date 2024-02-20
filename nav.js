@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchParam = encodeURIComponent('samsung');
 
     // Construct the URL with the search parameter
-    const apiUrl = "http://localhost:3600/api/search?productName=vivek kale";
+    const apiUrl = "http://localhost:3600/search?productName=vivek";
 
     // Fetch API call to your Express server endpoint with the search parameter
     fetch(apiUrl, { method: 'GET' })  
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             // Handle errors
             console.error('Error:', error.message);
-        });
+        });
 });
 
 // the function to display content after the anchor is clicked
