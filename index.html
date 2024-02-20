@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="nav-row.css" />
+    <link rel="stylesheet" href="row-up.css" />
+    <link rel="stylesheet" href="main-screen.css" />
+  </head>
+  <body>
+    <script src="nav.js"></script>
+    <div class="main-screen">
+      <div class="row-up">
+        <!-- the search bar along with the drop down and button -->
+        <div class="search-bar">
+          <select
+            id="dropdown"
+            name="dropdown"
+            style="
+              height: 35px;
+              width: 13%;
+              background-color: transparent;
+              color: rgba(255, 255, 255, 0.63);
+            "
+          >
+            <option value="option1">GET</option>
+            <option value="option2">PUT</option>
+            <option value="option3">POST</option>
+            <option value="option3">FETCH</option>
+          </select>
+          <input
+            type="text"
+            id="search"
+            name="q"
+            placeholder="Enter your search term"
+            style="
+              width: 78%;
+              height: 34px;
+              background-color: transparent;
+              color: #464646;
+            "
+          />
+          <button
+            type="submit"
+            style="
+              height: 35px;
+              width: 9%;
+              background-color: #0078d4;
+              color: white;
+            "
+          >
+            SEND
+          </button>
+        </div>
+      </div>
+
+      <!-- the row containing the anchor tags -->
+      <div class="nav-row">
+        <nav>
+          <a
+            href="#"
+             onclick="showContent('Query')" style="margin-left: 15px; color: rgba(255, 255, 255, 0.505)"
+            >Query</a
+          >
+          <a href="#"  onclick="showContent('Headers')" style="color: rgba(255, 255, 255, 0.505)"
+            >Headers</a
+          >
+          <a href="#"  onclick="showContent('Auth')" style="color: rgba(255, 255, 255, 0.505)"
+            >Auth</a
+          >
+          <a href="#"  onclick="showContent('Body')" style="color: rgba(255, 255, 255, 0.505)"
+            >Body</a
+          >
+          <a href="#"  onclick="showContent('Tests')" style="color: rgba(255, 255, 255, 0.505)"
+            >Tests</a
+          >
+          <a href="#"  onclick="showContent('Pre Run')" style="color: rgba(255, 255, 255, 0.505)"
+            >Pre Run</a
+          >
+        </nav>
+      </div>
+
+      <hr
+        style="
+          background-color: #484a4f;
+          height: 0.5px;
+          width: 100%;
+          border: none;
+        "
+      />
+
+      <!-- the content to be displayed after the anchor tag is clicked -->
+      <div class="anchor-content"></div>
+
+      <div class="row-down"></div>
+    </div>
+  </body>
+</html>

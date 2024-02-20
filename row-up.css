@@ -1,0 +1,21 @@
+.row-up{
+    display: flex;
+    flex-direction: row;
+    background-color: #1F1F1F;
+    justify-content: flex-start;
+    height: 11vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: flex-start;
+}
+.search-bar{
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+}
+.search-bar input{
+    padding: 0;
+    border:1px solid #5c5b5b;
+}
