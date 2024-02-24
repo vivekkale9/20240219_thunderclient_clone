@@ -15,30 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const searchParam = encodeURIComponent('samsung');
-
-    // Construct the URL with the search parameter
-    const apiUrl = "http://localhost:3600/search?productName=vivek";
-
-    // Fetch API call to your Express server endpoint with the search parameter
-    fetch(apiUrl, { method: 'GET' })  
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Handle the data from the API
-            console.log(data);
-        })
-        .catch(error => {
-            // Handle errors
-            console.error('Error:', error.message);
-        });
-});
-
 // Flag to check if it's the initial pair
 let initialPairAdded = false; // Flag to track if the initial pair is added
 
@@ -48,11 +24,17 @@ function addCheckboxPair() {
 
     const newCheckboxPair = document.createElement('div');
     newCheckboxPair.innerHTML = `
-        <div class="checkbox" style="border: 1px solid #636363; height: 16px; border-radius: 18%; width: 14px; display: flex; align-items: center; justify-content: center; margin-top: 10px;">
-            <input type="checkbox" style="position: absolute; border: none; opacity: 0.1">
+        <div class="checkbox" style="border: 1px solid #636363;
+         height: 16px; border-radius: 18%; width: 14px; display: flex;
+         align-items: center; justify-content: center; margin-top: 10px;">
+         <input type="checkbox" style="position: absolute; border: none; opacity: 0.1">
         </div>
-        <input type="text" placeholder="parameter" style="margin-left: 13px; background-color: transparent; border-bottom: 1px solid #636363; border-right: 0; width: 331px; color: white;">
-        <input type="text" placeholder="value" style="margin-left: 13px; background-color: transparent; border-bottom: 1px solid #636363; border-right: 0; width: 331px; color: white;">
+        <input type="text" placeholder="parameter" style="margin-left: 13px;
+         background-color: transparent; border-bottom: 1px solid #636363;
+         border-right: 0; width: 331px; color: white;">
+        <input type="text" placeholder="value" style="margin-left: 13px;
+         background-color: transparent; border-bottom: 1px solid #636363;
+         border-right: 0; width: 331px; color: white;">
     `;
 
     checkboxContainer.appendChild(newCheckboxPair);
@@ -68,18 +50,50 @@ function addCheckboxPair() {
 function showContent(content) {
     // Replace content based on the clicked anchor
     document.querySelector('.anchor-content').innerHTML =
-        `<p style="color: white; font-size: 22px; margin-top: 8px; margin-bottom: 11px; margin-left: 20px;">Query parameters</p>
-        <div class="checkbox-container" style="display:flex; flex-direction: row; margin-left: 20px;">
+        `<p style="color: white; font-size: 22px; margin-top: 8px;
+         margin-bottom: 11px; margin-left: 20px;">Query parameters</p>
+        <div class="checkbox-container" style="display:flex;
+         flex-direction: row; margin-left: 20px;">
         <div class="initial-container" style="display:flex; flex-direction: row">
-            <div class="checkbox" style="border: 1px solid #636363; height: 16px; border-radius: 18%; width: 14px; display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+            <div class="checkbox" style="border: 1px solid #636363;
+             height: 16px; border-radius: 18%; width: 14px; display: flex;
+             align-items: center; justify-content: center; margin-top: 10px;">
                 <input type="checkbox" style="position: absolute; border: none; opacity: 0.1">
             </div>
-            <input type="text" placeholder="parameter" style="margin-left: 13px; background-color: transparent; border-bottom: 1px solid #636363; border-right: 0; width: 331px; color: white;">
-            <input type="text" placeholder="value" style="margin-left: 13px; background-color: transparent; border-bottom: 1px solid #636363; border-right: 0; width: 331px; color: white;">
+            <input type="text" placeholder="parameter" style="margin-left: 13px;
+             background-color: transparent; border-bottom: 1px solid #636363;
+             border-right: 0; width: 331px; color: white;">
+            <input type="text" placeholder="value" style="margin-left: 13px;
+             background-color: transparent; border-bottom: 1px solid #636363;
+             border-right: 0; width: 331px; color: white;">
         </div>
         </div>
         <button onclick="addCheckboxPair()">Add</button>`;
 }
 
+// Function to send an api request to get the requested information
+function sendRequest() {
+    const dropdown = document.getElementById('dropdown');
+    const selectedMethod = dropdown.options[dropdown.selectedIndex].value;
 
+    const searchInput = document.getElementById('search');
+    const searchParam = encodeURIComponent(searchInput.value);
 
+    const apiUrl = `http://localhost:3600/search?productName=${searchParam}&method=${selectedMethod}`;
+
+    fetch(apiUrl, { method: selectedMethod })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the data from the API
+            console.log(data);
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error:', error.message);
+        });
+}
